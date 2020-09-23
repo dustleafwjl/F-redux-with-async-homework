@@ -12,6 +12,7 @@
     "lint": "eslint . --cache --fix -f table"
   },
   "dependencies": {
+    "assets": "^3.0.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-highlight": "^0.12.0",
