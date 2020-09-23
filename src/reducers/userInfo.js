@@ -1,11 +1,18 @@
+import Types from '../types';
+
 const userInfo = (state = { logged: false }, action) => {
-  if (action.type === 'SET_USER_INFO') {
-    return { ...state, ...action.payload };
+  switch (action.type) {
+    case Types.userInfoTypes.FETCH_USER_INFO_SUCCESS:
+      return { ...state, ...action.payload };
+    case Types.userInfoTypes.FETCH_USER_INFO_FAIL:
+      return { ...state, ...action.payload };
+    case Types.userInfoTypes.SET_USER_INFO:
+      return { ...state, ...action.payload };
+    case Types.userInfoTypes.CLEAR_USER_INFO:
+      return { logged: false };
+    default:
+      return state;
   }
-  if (action.type === 'CLEAR_USER_INFO') {
-    return { logged: false };
-  }
-  return state;
 };
 
 export default userInfo;

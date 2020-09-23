@@ -1,7 +1,9 @@
+import Types from '../types';
+
 export const setUserInfo = info => {
   // eslint-disable-line
   return {
-    type: 'SET_USER_INFO',
+    type: Types.SET_USER_INFO,
     payload: info
   };
 };
@@ -9,7 +11,7 @@ export const setUserInfo = info => {
 export const clearUserInfo = () => {
   // eslint-disable-line
   return {
-    type: 'CLEAR_USER_INFO'
+    type: Types.CLEAR_USER_INFO
   };
 };
 
