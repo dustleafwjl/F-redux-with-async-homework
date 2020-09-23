@@ -4,10 +4,8 @@ import { connect } from 'react-redux';
 import Header from './layout/Header';
 import Menu from './layout/Menu';
 import Home from './views/Home';
+import Error from './views/Error';
 import { modules } from './utils';
-
-import loadingImg from './assets/loading.jpg';
-import loginFailed from './assets/loginFailed.jpg';
 
 import './App.scss';
 
@@ -22,7 +20,7 @@ class App extends Component {
           <main className="main">
             <Switch>
               <Route exact path="/">
-                <Home />
+                {this.props.userInfo.fetchStatus === 'fail' ? <Error /> : <Home />}
               </Route>
               {this.props.userInfo.logged &&
                 modules.map(
