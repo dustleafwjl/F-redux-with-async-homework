@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchSetUserInfo, clearUserInfo } from '../actions';
+import { fetchUserInfo, clearUserInfo } from '../actions';
 import './Header.scss';
 
 class Header extends Component {
@@ -37,7 +37,7 @@ const mapStateToProps = ({ userInfo }) => ({
 });
 
 const mapDispatchToProps = {
-  handleSignIn: info => fetchSetUserInfo(info),
+  handleSignIn: info => fetchUserInfo(info),
   handleSignOut: () => clearUserInfo()
 };
 
