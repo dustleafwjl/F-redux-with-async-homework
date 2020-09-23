@@ -11,7 +11,7 @@ import './App.scss';
 
 class App extends Component {
   render() {
-    console.log(this.props.userInfo.fetchStatus);
+    console.log(this.props.login);
     return (
       <div className="app">
         <Router>
@@ -20,7 +20,7 @@ class App extends Component {
           <main className="main">
             <Switch>
               <Route exact path="/">
-                {this.props.userInfo.fetchStatus === 'fail' ? <Error /> : <Home />}
+                {this.props.login.loginStatus === 'fail' ? <Error /> : <Home />}
               </Route>
               {this.props.userInfo.logged &&
                 modules.map(
@@ -37,7 +37,7 @@ class App extends Component {
             </Switch>
           </main>
         </Router>
-        {this.props.userInfo.fetchStatus === 'pending' ? <LoadingMask /> : null}
+        {this.props.login.loginStatus === 'pending' ? <LoadingMask /> : null}
       </div>
     );
   }
@@ -58,8 +58,9 @@ const LoadingMask = () => {
   return <div style={loadingMaskStyle}>loading...</div>;
 };
 
-const mapStateToProps = ({ userInfo }) => ({
-  userInfo
+const mapStateToProps = ({ userInfo, login }) => ({
+  userInfo,
+  login
 });
 
 export default connect(mapStateToProps)(App);

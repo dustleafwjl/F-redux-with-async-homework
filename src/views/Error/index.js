@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { fetchUserInfo, clearUserInfo } from '../../actions';
+import { fetchUserInfo, loginRest } from '../../actions';
 import { connect } from 'react-redux';
 import './index.scss';
 
 class Profile extends Component {
   handleCancelClick = () => {
-    this.props.handleSignOut();
+    this.props.handleCancel();
   };
   handleCRetryClick = () => {
     this.props.handleSignIn();
@@ -30,7 +30,7 @@ const mapStateToProps = ({ userInfo }) => ({
 });
 const mapDispatchToProps = {
   handleSignIn: info => fetchUserInfo(info),
-  handleSignOut: () => clearUserInfo()
+  handleCancel: () => loginRest()
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

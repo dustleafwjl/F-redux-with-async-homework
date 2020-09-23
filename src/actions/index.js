@@ -15,32 +15,40 @@ export const clearUserInfo = () => {
   };
 };
 
-export const fetchUserInfoPending = () => {
+export const loginPending = () => {
   return {
-    type: Types.userInfoTypes.FETCH_USER_INFO_PENDING
+    type: Types.loginTypes.LOGIN_PENDING
   };
 };
-export const fetchUserInfoSuccess = () => {
+export const loginSuccess = () => {
   return {
-    type: Types.userInfoTypes.FETCH_USER_INFO_SUCCESS
+    type: Types.loginTypes.LOGIN_SUCCESS
   };
 };
 
-export const fetchUserInfoFail = () => {
+export const loginFail = () => {
   return {
-    type: Types.userInfoTypes.FETCH_USER_INFO_FAIL
+    type: Types.loginTypes.LOGIN_FAIL
   };
 };
+
+export const loginRest = () => {
+  return {
+    type: Types.loginTypes.LOGIN_RESET
+  };
+};
+
 export const fetchUserInfo = () => dispatch => {
-  dispatch(fetchUserInfoPending());
+  console.log(Types);
+  dispatch(loginPending());
   fetch('https://my-json-server.typicode.com/kevindongzg/demo/login')
     .then(res => res.json())
     .then(data => {
       dispatch(setUserInfo({ logged: true, ...data }));
-      dispatch(fetchUserInfoSuccess());
+      dispatch(loginSuccess());
     })
     .catch(err => {
       console.log(err);
-      dispatch(fetchUserInfoFail(err));
+      dispatch(loginFail(err));
     });
 };
